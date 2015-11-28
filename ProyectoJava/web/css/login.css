@@ -1,0 +1,51 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 28-nov-2015, 16:20:40
+    Author     : Jepa
+*/
+
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+.bold-white{
+	font-size:xx-large;
+	color:white;
+	font-style:bold;
+}
+
+.semi-bold-gray{
+	font-size:xx-large;
+	color:gray;
+}
+
+.sub-header-gray{
+	font-size:large;
+	color:gray;
+}
+
+#acciones, #form-1, #return-1, #form-2, #return-2, #form-3, #return-3, #form-4, #return-4, #form-5, #return-5, #form-6, #return-6, 
+#form-7, #return-7, #form-8, #return-8, #form-9, #return-9{
+	display:none;
+}
+
+.color-blue{
+	color:#32add6;
+}
+
+.margen-bot{
+	margin-bottom:5px;
+}
+
+.centered{
+	text-align:center;
+}
+
+.margen-right{
+	margin-right:5px;
+}
