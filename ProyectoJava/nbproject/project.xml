@@ -10,6 +10,17 @@
                     <file>${libs.Java-EE-GlassFish-v3-Prelude.classpath}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
+                <library dirs="200">
+                    <file>${file.reference.weld-integration-fragment.jar}</file>
+                </library>
+                <library dirs="200">
+                    <file>${file.reference.Downloads-mysql-5.7.9-osx10.10-x86_64}</file>
+                    <path-in-war>WEB-INF/classes</path-in-war>
+                </library>
+                <library dirs="200">
+                    <file>${file.reference.Applications-mysql-connector-java-5.1.37}</file>
+                    <path-in-war>WEB-INF/classes</path-in-war>
+                </library>
             </web-module-libraries>
             <web-module-additional-libraries/>
             <source-roots>

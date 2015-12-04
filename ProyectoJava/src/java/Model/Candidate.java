@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  */
 public class Candidate {
 
-    private int id;
+    private int id = -1;
     private String firstName;
     private String lastName;
     private String address;
@@ -32,9 +32,10 @@ public class Candidate {
     private String previous;
     private int interview;
     
-    public Candidate(String firstName, String lastName, String address, String phone, 
+    public Candidate(int id, String firstName, String lastName, String address, String phone, 
             String email, String title, String university, String certificates,
             int expectatives, String previous, int interview) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -55,6 +56,7 @@ public class Candidate {
             rs = Database.query(query, id);
             if (rs.next()){
                 candidate = new Candidate(
+                        rs.getInt("id"),
                         rs.getString("firstName"),
                         rs.getString("lastName"),
                         rs.getString("address"), 
@@ -67,7 +69,6 @@ public class Candidate {
                         rs.getString("previous"),
                         rs.getInt("interview")
                 );
-                candidate.setId(rs.getInt("id"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(Candidate.class.getName()).log(Level.SEVERE, null, ex);
@@ -89,10 +90,11 @@ public class Candidate {
     public static List<Candidate> all(){
         List<Candidate> candidates = new ArrayList<>();
         try {
-            String query = "SELECT * FROM Candidate WHERE id = '%d" ;
+            String query = "SELECT * FROM Candidate";
             ResultSet rs = Database.query(query);
             while(rs.next()) {
                 Candidate candidate = new Candidate(
+                        rs.getInt("id"),
                         rs.getString("firstName"),
                         rs.getString("lastName"),
                         rs.getString("address"), 
@@ -105,7 +107,6 @@ public class Candidate {
                         rs.getString("previous"),
                         rs.getInt("interview")
                 );
-                candidate.setId(rs.getInt("id"));
                 candidates.add(candidate);
             }
         } catch (SQLException ex) {
@@ -116,31 +117,16 @@ public class Candidate {
     
     public boolean save() throws SQLException{
         String query;
-        if (!(this.exists())) {
-            query = "INSERT INTO Candidate (id, firstName, lastName, address, phone,"
-                + " email, title, university, certificates, expectatives, previous, interview)" +
-            "VALUES ('%d', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%d', '%s', '%d')";  
-            try {
-            ResultSet rs = Database.query("SELECT id FROM Candidate ORDER BY id DESC LIMIT 1");
-            this.setId(rs.first() ? ( rs.getInt("id") + 1 ) : 0);
-            Database.update(query, this.id, this.firstName, this.lastName, this.address, 
-                this.phone, this.email, this.title, this.university, this.certificates, this.expectatives,
-                this.previous, this.interview);
-            } catch (SQLException ex) {
-                Logger.getLogger(Candidate.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else {
-            query = "UPDATE Candidate SET firstName='%s', lastName='%s', address='%s, " + 
-                    "phone='%s', email='%s', title='%s', university='%s'" +
-                    "certificates ='%s', expectatives = '%d', previous = '%s', interview = '%d' WHERE id = " + Integer.toString(this.id);
-            try {
-            Database.update(query, this.firstName, this.lastName, this.address, 
-                this.phone, this.email, this.title, this.university, this.certificates, this.expectatives,
-                this.previous, this.interview);
-            } catch (SQLException ex) {
-                Logger.getLogger(Candidate.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }   
+        query = "INSERT INTO Candidate (id, firstName, lastName, address, phone,"
+            + " email, title, university, certificates, expectatives, previous, interview)" +
+        "VALUES ('%d', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%d', '%s', '%d')";  
+        try {
+        Database.update(query, this.id, this.firstName, this.lastName, this.address, 
+            this.phone, this.email, this.title, this.university, this.certificates, this.expectatives,
+            this.previous, this.interview);
+        } catch (SQLException ex) {
+            Logger.getLogger(Candidate.class.getName()).log(Level.SEVERE, null, ex);
+        }  
         return true;
     }
     

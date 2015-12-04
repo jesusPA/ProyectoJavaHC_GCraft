@@ -1,3 +1,10 @@
+<%-- 
+    Document   : CreateCandidate
+    Created on : 04-dic-2015, 7:57:49
+    Author     : root
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -19,8 +26,7 @@
 	</head>
 
 <body>
-
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -37,16 +43,24 @@
             <br>
             <br>
             <br>
-    <form method="post" action="LogController">
-        <input type="hidden" name="operation" value="login"/>
-        <p><label>Usuario: <input type="text" name="us" required></label></p>
-
-        <p><label>Contraseña: <input type="password" name="pas" required></label></p>
-        <% if (request.getParameter("error") != null) { %>
-        <p class="error">Datos incorrectos.</p>
-        <% } %>
-        <input type="submit" value="Login">
-    </form>
+  <h2 class="centered">NUEVO CANDIDATO</h2>
+  <form action="CandidateController" method="post">
+                <input type="hidden" name="operation" value="create"/>
+                <p><label>Id: <input type="text" name="id" required></label></p>
+                <p><label>Nombre: <input type="text" name="name" required></label></p>
+                <p><label>Apellido: <input type="text" name="lastname" required></label></p>
+                <p><label>Direccion: <input type="text" name="address" required></label></p>
+                <p><label>Telefono: <input type="text" name="phone" required></label></p>
+                <p><label>Email: <input type="text" name="email" required></label></p>
+                <p><label>Titulo: <input type="text" name="title" required></label></p>
+                <p><label>Universidad: <input type="text" name="university" required></label></p>
+                <p><label>Certificados: <input type="text" name="certificates" required></label></p>
+                <p><label>Expectativas: <input type="text" name="expectatives" required></label></p>
+                <p><label>Trabajo Anterior: <input type="text" name="previous" required></label></p>
+                <input type="hidden" name="interview" value="3"/>
+                <input type="submit" name="crear"/>
+</form>	
+    
     <hr>
     <footer>
         <p>&copy; Company 2015</p>

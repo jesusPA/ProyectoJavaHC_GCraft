@@ -22,18 +22,27 @@ public class Database {
     
     static {
         try {
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:8080/ProyectoJava", "root", "");
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:8889/ProyectoJava?" + "user=root&password=root");
             stmt = con.createStatement();
         } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
     public static int update(String update, Object... args) throws SQLException {
-        return stmt.executeUpdate(String.format(update, args));
+        if(stmt!=null){ 
+            return stmt.executeUpdate(String.format(update, args));
+        }
+        return 1;
     }
     
     public static ResultSet query(String query, Object... args) throws SQLException {
-		return stmt.executeQuery(String.format(query, args));
+         if(stmt!=null){ 
+            return stmt.executeQuery(String.format(query, args));
+        }
+	return null;
     }
 }

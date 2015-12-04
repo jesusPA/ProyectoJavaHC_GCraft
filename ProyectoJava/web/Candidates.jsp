@@ -1,3 +1,11 @@
+<%-- 
+    Document   : Candidates
+    Created on : 04-dic-2015, 7:22:47
+    Author     : root
+--%>
+<%@page import="java.util.List"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="Model.Candidate"%>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -37,16 +45,44 @@
             <br>
             <br>
             <br>
-    <form method="post" action="LogController">
-        <input type="hidden" name="operation" value="login"/>
-        <p><label>Usuario: <input type="text" name="us" required></label></p>
-
-        <p><label>Contraseña: <input type="password" name="pas" required></label></p>
-        <% if (request.getParameter("error") != null) { %>
-        <p class="error">Datos incorrectos.</p>
-        <% } %>
-        <input type="submit" value="Login">
-    </form>
+    <table class="order-table table">
+            <thead>
+                    <tr>
+                            <th>Id</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Telefono</th>
+                            <th>Correo</th>
+                            <th>Titulo</th>
+                            <th>Universidad</th>
+                            <th>Certificados</th>
+                            <th>Expectativas</th>
+                            <th>Trabajos pasados</th>
+                            <th>Id Entrevista</th>
+                            <th></th>
+                    </tr>
+            </thead>
+            <tbody>
+                <%	List<Candidate> candidates = (List<Candidate>)Candidate.all();
+                    int size = (candidates != null) ? candidates.size() : 0;
+                    for (int i=0; i<size; i++) { %>
+                            <tr>
+                                    <td><%= candidates.get(i).getId() %></td>
+                                    <td><%= candidates.get(i).getFirstName() %></td>
+                                    <td><%= candidates.get(i).getLastName() %></td>
+                                    <td><%= candidates.get(i).getPhone() %></td>
+                                    <td><%= candidates.get(i).getEmail() %></td>
+                                    <td><%= candidates.get(i).getTitle() %></td>
+                                    <td><%= candidates.get(i).getUniversity() %></td>
+                                    <td><%= candidates.get(i).getCertificates() %></td>
+                                    <td><%= candidates.get(i).getExpectatives() %></td>
+                                    <td><%= candidates.get(i).getPrevious() %></td>
+                                    <td><%= candidates.get(i).getInterview() %></td>
+                            </tr>
+            <% } %>
+            </tbody>
+    </table>
+    <a class="button" id="new" href="CreateCandidate.jsp">Nuevo</a>
     <hr>
     <footer>
         <p>&copy; Company 2015</p>
@@ -62,3 +98,4 @@
 </body>
 
 </html>
+

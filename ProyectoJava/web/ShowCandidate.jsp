@@ -1,3 +1,12 @@
+<%-- 
+    Document   : ShowCandidate
+    Created on : 04-dic-2015, 9:20:15
+    Author     : root
+--%>
+
+<%@page import="java.util.List"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="Model.Candidate"%>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -37,16 +46,42 @@
             <br>
             <br>
             <br>
-    <form method="post" action="LogController">
-        <input type="hidden" name="operation" value="login"/>
-        <p><label>Usuario: <input type="text" name="us" required></label></p>
-
-        <p><label>Contraseña: <input type="password" name="pas" required></label></p>
-        <% if (request.getParameter("error") != null) { %>
-        <p class="error">Datos incorrectos.</p>
-        <% } %>
-        <input type="submit" value="Login">
-    </form>
+    <table class="order-table table">
+            <thead>
+                    <tr>
+                            <th>Id</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Telefono</th>
+                            <th>Correo</th>
+                            <th>Titulo</th>
+                            <th>Universidad</th>
+                            <th>Certificados</th>
+                            <th>Expectativas</th>
+                            <th>Trabajos pasados</th>
+                            <th>Id Entrevista</th>
+                            <th></th>
+                    </tr>
+            </thead>
+            <tbody>
+                <% int id = (Integer.parseInt(request.getParameter("id")));
+                Candidate candidate = Candidate.getCandidate(id); %>
+                            <tr>
+                                    <td><%= candidate.getId() %></td>
+                                    <td><%= candidate.getFirstName() %></td>
+                                    <td><%= candidate.getLastName() %></td>
+                                    <td><%= candidate.getPhone() %></td>
+                                    <td><%= candidate.getEmail() %></td>
+                                    <td><%= candidate.getTitle() %></td>
+                                    <td><%= candidate.getUniversity() %></td>
+                                    <td><%= candidate.getCertificates() %></td>
+                                    <td><%= candidate.getExpectatives() %></td>
+                                    <td><%= candidate.getPrevious() %></td>
+                                    <td><%= candidate.getInterview() %></td>
+                                    <td><a href=<%= "candidates?operation=show&id="+candidate.getId() %> class="button">Borrar</a></td>
+                            </tr>
+            </tbody>
+    </table>
     <hr>
     <footer>
         <p>&copy; Company 2015</p>
@@ -62,3 +97,4 @@
 </body>
 
 </html>
+

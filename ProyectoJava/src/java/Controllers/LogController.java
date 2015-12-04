@@ -27,18 +27,19 @@ public class LogController extends HttpServlet{
 			throws ServletException, IOException, SQLException {
 		String operation = request.getParameter("operation");
 		String url = "login.jsp";
+                System.out.println("login");
                 switch (operation) {
                     case "login":
-                        String email = request.getParameter("user");
-                        String password = request.getParameter("password");
+                        String email = request.getParameter("us");
+                        String password = request.getParameter("pas");
                         try {
-                            String query = "SELECT id FROM User WHERE email = "+ email + "AND password = " + password;
+                            String query = "SELECT id FROM User WHERE email = '%s' AND password = '%s'";
                             ResultSet rs = Database.query(query, email, password);
                             if (rs.first()) {
                                 request.getSession().setAttribute("loggedIn", rs.getInt("id"));
-                                url = "candidates";
+                                url = "Candidates.jsp";
                             } else {
-                                url = "login.jsp?error=1";
+                                url = "login.jsp?error=1\"";
                             }
                         } catch (SQLException ex) {
                             Logger.getLogger(LogController.class.getName()).log(Level.SEVERE, null, ex);

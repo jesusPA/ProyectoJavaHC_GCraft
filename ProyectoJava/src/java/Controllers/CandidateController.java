@@ -33,7 +33,7 @@ public class CandidateController extends HttpServlet {
         if (operation == null || operation.equals("login")){
             List<Candidate> candidates = Candidate.all();
             request.setAttribute("candidates", candidates);
-            url = "/candidates.jsp";
+            url = "/CreateCandidate.jsp";
         }
         else if (operation.equals("edit") || operation.equals("show") || operation.equals("delete")){
             int id = Integer.parseInt(paramId);
@@ -43,10 +43,10 @@ public class CandidateController extends HttpServlet {
             }
             switch (operation) {
                 case "show":
-                    url = "/show_candidate.jsp";
+                    url = "/ShowCandidate.jsp";
                     break;
                 case "edit":
-                    url = "/edit_candidate.jsp";
+                    url = "/EditCandidate.jsp";
                     break;
                 case "delete":
                     candidate.delete();
@@ -56,7 +56,7 @@ public class CandidateController extends HttpServlet {
             }
         }
         else if (operation.equals("create")){
-            url = "/create_candidate.jsp";
+            url = "/CreateCandidate.jsp";
         }
         if (!redirect)
         {
@@ -87,27 +87,26 @@ public class CandidateController extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(CandidateController.class.getName()).log(Level.SEVERE, null, ex);
         }  
-        String url = "/show_candidate.jsp";
+        String url = "/Candidates.jsp";
         request.setAttribute("candidate", candidate); 
         RequestDispatcher dispatcher = context.getRequestDispatcher(url);
         dispatcher.forward(request, response); 
     }
     
     private Candidate createCandidate(HttpServletRequest request)
-    {
-        String id = request.getParameter("id"); 
+    {   int id = Integer.parseInt(request.getParameter("id"));
         String firstName = request.getParameter("name");
         String lastName = request.getParameter("lastname");
         String address = request.getParameter("address");
         String phone = request.getParameter("phone");
         String email = request.getParameter("email");
         String title = request.getParameter("title");
-        String university = request.getParameter("birthday");
+        String university = request.getParameter("university");
         String certificates = request.getParameter("certificates");
         String expectatives = request.getParameter("expectatives");
         String previous = request.getParameter("previous");
         String interview = request.getParameter("interview");
-        Candidate candidate = new Candidate(firstName, lastName, address, phone, email, title, university,
+        Candidate candidate = new Candidate(id,firstName, lastName, address, phone, email, title, university,
         certificates, Integer.parseInt(expectatives), previous, Integer.parseInt(interview));
         return candidate; 
     }
