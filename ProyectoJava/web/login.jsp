@@ -54,17 +54,16 @@
     </nav>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-      <div id="cuerpo-1" class="container">
-        <div>
-			<div id="bienvenido">
-				<h1>Bienvenido!</h1>
-				<p>Este es el sistema de Capital Humano para empresas. <span id="ingresar" class="color-blue">Ingresa a tu cuenta para comenzar.</span></p>
-			</div>
-			<div id="return-1">
-				<a id="regresa-1" type="button" class="btn btn-default">Regresar</a>
-			
-		</div>
+<div class="jumbotron">
+  <div id="cuerpo-1" class="container">
+    <div>
+        <div id="bienvenido">
+                <h1>Bienvenido!</h1>
+                <p>Este es el sistema de Capital Humano para empresas. <span id="ingresar" class="color-blue">Ingresa a tu cuenta para comenzar.</span></p>
+        </div>
+        <div id="return-1">
+                <a id="regresa-1" type="button" class="btn btn-default">Regresar</a>
+        </div>
 
 			
 			
@@ -75,10 +74,10 @@
     </div> <!-- /container -->
 	
 	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>	
-	<script src="js/funct.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>	
+    <script src="js/funct.js"></script>
 	
 </body>
 
