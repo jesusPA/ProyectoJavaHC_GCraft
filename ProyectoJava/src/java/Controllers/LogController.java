@@ -32,7 +32,7 @@ public class LogController extends HttpServlet{
                         String email = request.getParameter("user");
                         String password = request.getParameter("password");
                         try {
-                            String query = "SELECT id FROM User WHERE email = "+email + "AND password = "+password;
+                            String query = "SELECT id FROM User WHERE email = "+ email + "AND password = " + password;
                             ResultSet rs = Database.query(query, email, password);
                             if (rs.first()) {
                                 request.getSession().setAttribute("loggedIn", rs.getInt("id"));
