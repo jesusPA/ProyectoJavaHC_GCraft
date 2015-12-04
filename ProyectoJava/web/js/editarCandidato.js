@@ -1,10 +1,8 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+$(".prevent").submit(function(e){
+    return false;
+});
 
-$( "form:first" ).submit(function() {
+$( "#forma-sign" ).submit(function() {
 	$('#ingresar').fadeOut('slow');
 	$('#acciones').fadeIn('slow');
 });
@@ -33,7 +31,7 @@ $('#regresa-2').on('click',function(){
 	$('#return-2').hide();
 	$('#form-2').hide();
 	$('#acciones').fadeToggle('slow');
-})
+});
 
 $('#elimina-candidato').on('click',function(){
 	$('#bienvenido').hide();
@@ -46,7 +44,7 @@ $('#regresa-3').on('click',function(){
 	$('#return-3').hide();
 	$('#form-3').hide();
 	$('#acciones').fadeToggle('slow');
-})
+});
 
 $('#agrega-empleado').on('click',function(){
 	$('#bienvenido').hide();
@@ -59,7 +57,7 @@ $('#regresa-4').on('click',function(){
 	$('#return-4').hide();
 	$('#form-4').hide();
 	$('#acciones').fadeToggle('slow');
-})
+});
 
 $('#modifica-empleado').on('click',function(){
 	$('#bienvenido').hide();
@@ -72,7 +70,7 @@ $('#regresa-5').on('click',function(){
 	$('#return-5').hide();
 	$('#form-5').hide();
 	$('#acciones').fadeToggle('slow');
-})
+});
 
 $('#elimina-empleado').on('click',function(){
 	$('#bienvenido').hide();
@@ -85,7 +83,7 @@ $('#regresa-6').on('click',function(){
 	$('#return-6').hide();
 	$('#form-6').hide();
 	$('#acciones').fadeToggle('slow');
-})
+});
 
 $('#agrega-entrevista').on('click',function(){
 	$('#bienvenido').hide();
@@ -98,7 +96,7 @@ $('#regresa-7').on('click',function(){
 	$('#return-7').hide();
 	$('#form-7').hide();
 	$('#acciones').fadeToggle('slow');
-})
+});
 
 $('#modifica-entrevista').on('click',function(){
 	$('#bienvenido').hide();
@@ -111,7 +109,7 @@ $('#regresa-8').on('click',function(){
 	$('#return-8').hide();
 	$('#form-8').hide();
 	$('#acciones').fadeToggle('slow');
-})
+});
 
 $('#genera-reporte').on('click',function(){
 	$('#bienvenido').hide();
@@ -124,5 +122,4 @@ $('#regresa-9').on('click',function(){
 	$('#return-9').hide();
 	$('#form-9').hide();
 	$('#acciones').fadeToggle('slow');
-})
-
+});
