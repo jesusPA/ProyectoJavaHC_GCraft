@@ -22,7 +22,7 @@ public class Database {
     
     static {
         try {
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3000/HC", "root", "");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:8080/ProyectoJava", "root", "");
             stmt = con.createStatement();
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
